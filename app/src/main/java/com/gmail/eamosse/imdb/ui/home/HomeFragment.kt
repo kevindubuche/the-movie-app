@@ -35,13 +35,27 @@ class HomeFragment : Fragment() {
                 getCategories()
             })
 
-            categories.observe(viewLifecycleOwner, Observer {
-                binding.categoryList.adapter = CategoryAdapter(it)
-            })
-
             error.observe(viewLifecycleOwner, Observer {
                 //afficher l'erreur
             })
         }
     }
+
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+        with(homeViewModel) {
+            categories.observe(
+                viewLifecycleOwner,
+                Observer {
+                    binding.categoryList.adapter = CategoryAdapter(it) {
+                        val action = HomeFragmentDirections
+                            .actionHomeFragmentToHomeSecondFragment(it.id.toString())
+                        NavHostFragment.findNavController(this@HomeFragment)
+                            .navigate(action)
+                    }
+                }
+            )
+        }
+    }
+
 }
