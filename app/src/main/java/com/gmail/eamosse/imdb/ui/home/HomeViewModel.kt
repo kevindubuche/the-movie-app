@@ -5,12 +5,14 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.gmail.eamosse.idbdata.data.Category
+import com.gmail.eamosse.idbdata.data.Movie
 import com.gmail.eamosse.idbdata.data.MovieOfACategory
 import com.gmail.eamosse.idbdata.data.Token
 import com.gmail.eamosse.idbdata.repository.MovieRepository
 import com.gmail.eamosse.idbdata.utils.Result
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import java.util.*
 
 class HomeViewModel(private val repository: MovieRepository) : ViewModel() {
 
@@ -30,6 +32,9 @@ class HomeViewModel(private val repository: MovieRepository) : ViewModel() {
     val discoveries: LiveData<List<MovieOfACategory>>
         get() = _discovers
 
+    private val _movie: MutableLiveData<Movie> = MutableLiveData()
+    val movie: LiveData<Movie>
+        get() = _movie
 
     init {
         viewModelScope.launch(Dispatchers.IO) {
@@ -87,5 +92,17 @@ class HomeViewModel(private val repository: MovieRepository) : ViewModel() {
         }
     }
 
+    fun getMovie(id: Int)  {
+        viewModelScope.launch(Dispatchers.IO) {
+            when (val result = repository.getMovie(id)) {
+                is Result.Succes -> {
+                    _movie.postValue(result.data)
+                }
+                is Result.Error -> {
+                    _error.postValue(result.message)
+                }
+            }
+        }
+    }
 
 }
