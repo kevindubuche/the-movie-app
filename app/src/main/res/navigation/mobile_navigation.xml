@@ -29,16 +29,16 @@
             app:argType="string" />
         <action
             android:id="@+id/action_HomeSecondFragment_to_MovieAboutFragment"
-            app:destination="@id/navigation_movie_about" />
+            app:destination="@id/navigation_movie_info" />
 
 
     </fragment>
 
     <fragment
-        android:id="@+id/navigation_movie_about"
-        android:name="com.gmail.eamosse.imdb.ui.home.MovieAboutFragment"
+        android:id="@+id/navigation_movie_info"
+        android:name="com.gmail.eamosse.imdb.ui.home.MovieInfoFragment"
         android:label="Movie"
-        tools:layout="@layout/fragment_movie_about">
+        tools:layout="@layout/fragment_movie_info">
         <argument
             android:name="movieId"
             app:argType="string" />
