@@ -104,4 +104,17 @@ class HomeViewModel(private val repository: MovieRepository) : ViewModel() {
         }
     }
 
+    fun getSimilarmovies(id: Int, pagination:Int = 1)  {//get Movies of a category
+        viewModelScope.launch(Dispatchers.IO) {
+            when (val result = repository.getSimilarMovies(id, pagination)) {
+                is Result.Succes -> {
+                    _moc.postValue(result.data)
+                }
+                is Result.Error -> {
+                    _error.postValue(result.message)
+                }
+            }
+        }
+    }
+
 }

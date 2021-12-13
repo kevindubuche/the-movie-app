@@ -9,8 +9,6 @@
     </data>
 
 
-
-
         <ScrollView
             android:id="@+id/scrollview"
             android:layout_width="match_parent"
@@ -23,21 +21,22 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                tools:context=".ui.home.HomeSecondFragment">
+                tools:context=".ui.home.HomeSecondFragment"
+                >
 
                 <androidx.appcompat.widget.AppCompatImageView
                     android:id="@+id/moviePoster"
-                    android:layout_width="356dp"
-                    android:layout_height="360dp"
-                    android:layout_marginTop="32dp"
+                    android:layout_width="414dp"
+                    android:layout_height="402dp"
                     android:contentDescription="@string/todo"
                     app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.111"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:srcCompat="@drawable/ic_launcher_background"
                     tools:ignore="ImageContrastCheck" />
 
-        <androidx.appcompat.widget.AppCompatTextView
+                <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/movieTitle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -45,13 +44,14 @@
             android:layout_marginTop="56dp"
             android:layout_marginEnd="24dp"
             android:text="@{item.title}"
-            android:textColor="#000000"
-            android:textSize="20sp"
+            android:textColor="#FFFFFF"
+            android:textSize="30sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/moviePoster"
-            tools:text="Title" />
+            tools:text="Title"
+            />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/movieDate"
@@ -61,7 +61,7 @@
                 android:layout_marginTop="20dp"
                 android:layout_marginEnd="24dp"
                 android:text="@{item.release_date}"
-                android:textColor="#000000"
+                android:textColor="#FFFFFF"
                 android:textSize="20sp"
                 android:justificationMode="inter_word"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -78,7 +78,7 @@
             android:layout_marginTop="20dp"
             android:layout_marginEnd="24dp"
             android:text="@{item.overview}"
-            android:textColor="#000000"
+            android:textColor="#FFFFFF"
             android:textSize="20sp"
             android:justificationMode="inter_word"
             app:layout_constraintEnd_toEndOf="parent"
@@ -95,7 +95,7 @@
             android:layout_marginTop="24dp"
             android:layout_marginEnd="24dp"
             android:text="@{item.vote_count}"
-            android:textColor="#000000"
+            android:textColor="#FFFFFF"
             android:textSize="20sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
@@ -117,7 +117,10 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/movieVoteCount" />
 
+
             </androidx.constraintlayout.widget.ConstraintLayout>
+
+
         </ScrollView>
 
 </layout>

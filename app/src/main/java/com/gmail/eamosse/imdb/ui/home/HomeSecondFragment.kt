@@ -19,10 +19,6 @@ class HomeSecondFragment : Fragment() {
     private val homeViewModel: HomeViewModel by viewModel()
     private lateinit var binding: FragmentHomeSecondBinding
 
-    companion object {
-        const val ARG_GENRE = "genre"
-    }
-
     var page: Int = 1
     var scrolled = 0;
 
@@ -43,11 +39,9 @@ class HomeSecondFragment : Fragment() {
                 Observer {
                     getMoc(id = args.myArg.toInt(), page)
 
+
                     mocList.addOnScrollListener(object : RecyclerView.OnScrollListener() {
-                        override fun onScrollStateChanged(
-                            recyclerView: RecyclerView,
-                            newState: Int
-                        ) {
+                        override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int ) {
                             super.onScrollStateChanged(recyclerView, newState);
                             if (!recyclerView.canScrollVertically(1)) {
                                 val thread = Thread {
@@ -58,11 +52,9 @@ class HomeSecondFragment : Fragment() {
                             }
                         }
 
-                        override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
-                            super.onScrolled(recyclerView, dx, dy)
-                            scrolled += dy;
-                        }
                     })
+
+
                 }
             )
 
@@ -73,6 +65,7 @@ class HomeSecondFragment : Fragment() {
                         val action = HomeSecondFragmentDirections.actionHomeSecondFragmentToMovieAboutFragment(it.id.toString());
                         NavHostFragment.findNavController(this@HomeSecondFragment).navigate(action)
                     }
+
 
                 }
             )
