@@ -17,7 +17,9 @@ internal data class MovieOfACategoryResponse(
         @SerializedName("poster_path")
         val poster_path: String ?,
         @SerializedName("adult")
-        val mature: Boolean ?
+        val mature: Boolean ?,
+        @SerializedName("release_date")
+        val release_date: String ?
     )
 }
 
@@ -25,5 +27,6 @@ internal fun MovieOfACategoryResponse.MovieOfACategoryItem.toMovieOfACategory() 
     id = id,
     title = title ?: "",
     overview = overview ?: "",
-    poster_path = poster_path ?: ""
+    poster_path = poster_path ?: "",
+    release_date = release_date ?: ""
 )

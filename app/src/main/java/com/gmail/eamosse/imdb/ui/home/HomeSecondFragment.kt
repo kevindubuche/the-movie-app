@@ -19,10 +19,6 @@ class HomeSecondFragment : Fragment() {
     private val homeViewModel: HomeViewModel by viewModel()
     private lateinit var binding: FragmentHomeSecondBinding
 
-    companion object {
-        const val ARG_GENRE = "genre"
-    }
-
     var page: Int = 1
     var scrolled = 0;
 
@@ -43,11 +39,9 @@ class HomeSecondFragment : Fragment() {
                 Observer {
                     getMoc(id = args.myArg.toInt(), page)
 
-                    mogList.addOnScrollListener(object : RecyclerView.OnScrollListener() {
-                        override fun onScrollStateChanged(
-                            recyclerView: RecyclerView,
-                            newState: Int
-                        ) {
+
+                    mocList.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+                        override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int ) {
                             super.onScrollStateChanged(recyclerView, newState);
                             if (!recyclerView.canScrollVertically(1)) {
                                 val thread = Thread {
@@ -58,33 +52,34 @@ class HomeSecondFragment : Fragment() {
                             }
                         }
 
-                        override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
-                            super.onScrolled(recyclerView, dx, dy)
-                            scrolled += dy;
-                        }
                     })
+
+
                 }
             )
 
-
-        }
-    }
-
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        with(homeViewModel) {
-            discoveries.observe(
+            moc.observe(
                 viewLifecycleOwner,
                 Observer {
-                    binding.mogList.adapter = MovieOfACategoryAdapter(it) {
+                    binding.mocList.adapter = MovieOfACategoryAdapter(it) {
                         val action = HomeSecondFragmentDirections.actionHomeSecondFragmentToMovieAboutFragment(it.id.toString());
                         NavHostFragment.findNavController(this@HomeSecondFragment).navigate(action)
                     }
 
+
                 }
             )
+
+
         }
     }
+
+//    override fun onActivityCreated(savedInstanceState: Bundle?) {
+//        super.onActivityCreated(savedInstanceState)
+//        with(homeViewModel) {
+//
+//        }
+//    }
 
 }
 

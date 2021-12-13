@@ -56,10 +56,10 @@ class MovieRepository : KoinComponent {
     suspend fun getMovieOfACategory(id:Int, page:Int = 1): Result<List<MovieOfACategory>> {
         return when(val result = online.getMovieOfACategory(id, page)) {
             is Result.Succes -> {
-                val discover = result.data.map {
+                val data = result.data.map {
                     it.toMovieOfACategory()
                 }
-                Result.Succes(discover)
+                Result.Succes(data)
             }
             is Result.Error -> result
         }
@@ -73,4 +73,17 @@ class MovieRepository : KoinComponent {
             is Result.Error -> result
         }
     }
+
+    suspend fun getSimilarMovies(id: Int,page: Int): Result<List<MovieOfACategory>>{
+        return when(val result = online.getSimilarMovies(id, page)){
+            is Result.Succes -> {
+                val data = result.data.map {
+                    it.toMovieOfACategory()
+                }
+                Result.Succes(data)
+            }
+            is Result.Error -> result
+        }
+    }
+
 }

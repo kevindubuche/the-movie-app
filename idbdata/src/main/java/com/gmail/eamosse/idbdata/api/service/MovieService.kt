@@ -23,4 +23,7 @@ internal interface MovieService {
     @GET("/3/movie/{movie}")
     suspend fun getMovie(@Path("movie") movie:Int): Response<MovieResponse>
 
+    @GET("/3/movie/{movie_id}/similar")
+    suspend fun getSimilarMovies(@Path("movie_id")id: Int ,@Query("page") page: Int): Response<MovieOfACategoryResponse>
+
 }

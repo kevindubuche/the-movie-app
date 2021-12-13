@@ -28,9 +28,9 @@ class HomeViewModel(private val repository: MovieRepository) : ViewModel() {
     val categories: LiveData<List<Category>>
         get() = _categories
 
-    private val _discovers: MutableLiveData<List<MovieOfACategory>> = MutableLiveData()
-    val discoveries: LiveData<List<MovieOfACategory>>
-        get() = _discovers
+    private val _moc: MutableLiveData<List<MovieOfACategory>> = MutableLiveData()
+    val moc: LiveData<List<MovieOfACategory>>
+        get() = _moc
 
     private val _movie: MutableLiveData<Movie> = MutableLiveData()
     val movie: LiveData<Movie>
@@ -66,7 +66,7 @@ class HomeViewModel(private val repository: MovieRepository) : ViewModel() {
         viewModelScope.launch(Dispatchers.IO) {
             when (val result = repository.getMovieOfACategory(id, pagination)) {
                 is Result.Succes -> {
-                    _discovers.postValue(result.data)
+                    _moc.postValue(result.data)
                 }
                 is Result.Error -> {
                     _error.postValue(result.message)
@@ -79,10 +79,9 @@ class HomeViewModel(private val repository: MovieRepository) : ViewModel() {
         viewModelScope.launch(Dispatchers.IO) {
             when (val result = repository.getMovieOfACategory(id, page)) {
                 is Result.Succes -> {
-                    val dis = _discovers.value;
-                    dis.let {
+                    _moc.value.let {
                         val movies = listOf<MovieOfACategory>(*it!!.toTypedArray(), *result.data.toTypedArray());
-                        _discovers.postValue(movies)
+                        _moc.postValue(movies)
                     }
                 }
                 is Result.Error -> {
@@ -97,6 +96,19 @@ class HomeViewModel(private val repository: MovieRepository) : ViewModel() {
             when (val result = repository.getMovie(id)) {
                 is Result.Succes -> {
                     _movie.postValue(result.data)
+                }
+                is Result.Error -> {
+                    _error.postValue(result.message)
+                }
+            }
+        }
+    }
+
+    fun getSimilarmovies(id: Int, pagination:Int = 1)  {//get Movies of a category
+        viewModelScope.launch(Dispatchers.IO) {
+            when (val result = repository.getSimilarMovies(id, pagination)) {
+                is Result.Succes -> {
+                    _moc.postValue(result.data)
                 }
                 is Result.Error -> {
                     _error.postValue(result.message)

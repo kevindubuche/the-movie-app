@@ -68,5 +68,17 @@ internal class OnlineDataSource(private val service: MovieService) {
             response.parse()
         }
     }
+
+    suspend fun getSimilarMovies(id: Int, page: Int): Result<List<MovieOfACategoryResponse.MovieOfACategoryItem>> {
+        return safeCall {
+            val response = service.getSimilarMovies(id, page)
+            when (val result = response.parse()) {
+                is Result.Succes -> Result.Succes(result.data.results)
+                is Result.Error -> result
+            }
+        }
+
+    }
+
 }
 

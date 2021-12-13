@@ -22,12 +22,21 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
+<!--                <androidx.recyclerview.widget.RecyclerView-->
+<!--                    android:id="@+id/mocList"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="match_parent"-->
+<!--                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"-->
+<!--                    app:spanCount="6"-->
+<!--                    tools:listitem="@layout/moc_item_list" />-->
+
                 <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/mogList"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:id="@+id/mocList"
+                    android:scrollbars="vertical"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                    app:spanCount="4"
+                    app:spanCount="6"
                     tools:listitem="@layout/moc_item_list" />
             </LinearLayout>
         </ScrollView>
