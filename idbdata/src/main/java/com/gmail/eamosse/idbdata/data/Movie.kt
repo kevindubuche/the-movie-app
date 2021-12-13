@@ -5,6 +5,6 @@ data class Movie(
     val title: String,
     val overview: String,
     val poster_path: String,
-    val vote_count: Int,
+    val vote_count: String,
     val release_date: String
 )

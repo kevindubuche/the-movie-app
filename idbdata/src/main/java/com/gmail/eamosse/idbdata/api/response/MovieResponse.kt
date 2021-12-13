@@ -25,6 +25,6 @@ internal fun MovieResponse.toMovie() = Movie(
     title = title,
     overview = overview,
     poster_path = poster_path,
-    vote_count = vote_count,
+    vote_count = vote_count.toString(),
     release_date = release_date
 )
