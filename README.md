@@ -1,53 +1,52 @@
-# The Moovie App
+# Projet Android MBDS
+- 2021-2022
+- Professeur : Amosse EDOUARD
 
-## Objectifs fonctionnels  
-Dans ce projet, nous allons créer l'application AnneFlix (The new Netflix). L'objectif est d'exploiter la base de données TheMoovieDB (https://developers.themoviedb.org/3) afin de permettre aux utilisateurs de l'application de visualiser, noter et voir la bande annonce des films de la base de données. 
+# QUOI ?
+Projet de fin de cours d'Android/Kotlin.
+Il s'agit d'un projet dans lequel nous créons l'application AnneFlix (The new Netflix).
+L'objectif est d'exploiter la base de données TheMoovieDB.
 
-## Objectifs techniques 
-Techniquement, ce projet devrait nous permettre d'expérimenter de manière plus approfondie les notions vues en cours: 
-- Kotlin
-- Architecture Components 
-- Data Binding
-- Retrofit 
-- Room 
-- .... 
+# QUAND ?
+Année académique 2021-2022
 
-## Quelques librairies à utiliser 
-- Navigation-fragment 
-- Hilt : Injection de dépendances 
-- Gson/Moshi : Sérialisation et Désérialisation JSON 
-- Retrofit: Pour consommer l'API The Moovie DB
-- Picasso/Glide/Coil/ : Pour afficher les images 
-- OkHttp: Client HTTP
+# OU ?
+MBDS
 
-## Critères d'acceptance
-- Une seule activité
-- Au moins 5 vues différentes (fragments) + un fragment About qui présente le projet et les membres du groupe
-- Gestion de données via une API et Room
-- Gestion de la navigation avec Navigation-fragment
-- Tests unitaires (Datasource et Repository)
-- Au moins 2 tests instrumentaires par vues
+# COMMENT ?
+## Coté technique
+- Kotlin | Architecture Components | Data Binding | Retrofit | Room | ...
+- Lirairies : Navigation-fragment | Hilt | Gson | Retrofit | Picasso | Glide | OkHttp | ...
 
+# Réalisations
+## Animation
+![Android](imgs/gif.gif)
 
-## Différentes étapes 
-1. Fork le repository.  
+## Liste des catégories de movies
+![Android](imgs/f1.png)
 
-2. Afficher les catégories de films. Les étapes sont décrites [ici](https://github.com/eamosse/the-movie-app/blob/master/home_tuto.md)
+## Liste des movies d'une catégorie spécifique
+![Android](imgs/f2.png)
+![Android](imgs/f3.png)
+![Android](imgs/f4.png)
 
-3. Afficher les films d'une catégorie. Les consignes sont par [ici](https://github.com/eamosse/the-movie-app/blob/master/movie_list.md)
+## Détails d'un movie
+![Android](imgs/f5.png)
+![Android](imgs/f6.png)
+![Android](imgs/f7.png)
+![Android](imgs/f8.png)
+![Android](imgs/f9.png)
 
-## Organisation
-- Groupes de 3 à 4 personnes
-- Commits, branches, et pull requests (il n'y aura pas de notes de groupe, le travail de chacun sera évalué principalement sur les commits) 
+## About
+![Android](imgs/f10.png)
 
-## Rendu
-- Date limite : 30 Novembre 2021 (avant minuit) 
-- Modalités de rendu : Remplir le drive qui vous sera envoyé par mail
-- Ajouté un fichier readme dans lequel vous décrirez 
-    - Le contexte du projet et ses différentes fonctionnalités
-    - La liste des membres du groupe
-    - Captures d'écrans des principales vues 
-    - Vidéos de démonstration de l'application 
+# Sources
+- Cours Android MBDS
+- TMDB [Lien](hhttps://www.themoviedb.org/)
+- Medium [Lien](https://medium.com/androiddevelopers)
+- Stackoverflow
+- Youtube
+- ...
 
 
 
