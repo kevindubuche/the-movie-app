@@ -8,12 +8,7 @@
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">About</string>
-
-<<<<<<< HEAD
     <string name="home_second">Movies</string>
-=======
-    <string name="home_second">Home Second</string>
     <string name="todo">TODO</string>
     <string name="like">Like</string>
->>>>>>> a911d1587628d20d97aafafa69630108fb6f165a
 </resources>
