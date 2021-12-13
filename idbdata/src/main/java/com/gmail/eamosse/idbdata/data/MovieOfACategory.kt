@@ -4,5 +4,6 @@ data class MovieOfACategory(
     val id: Int,
     val title: String,
     val overview: String,
-    val poster_path: String
+    val poster_path: String,
+    val release_date : String
 )

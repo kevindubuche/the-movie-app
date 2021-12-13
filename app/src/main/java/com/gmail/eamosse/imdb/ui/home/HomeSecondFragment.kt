@@ -43,7 +43,7 @@ class HomeSecondFragment : Fragment() {
                 Observer {
                     getMoc(id = args.myArg.toInt(), page)
 
-                    mogList.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+                    mocList.addOnScrollListener(object : RecyclerView.OnScrollListener() {
                         override fun onScrollStateChanged(
                             recyclerView: RecyclerView,
                             newState: Int
@@ -66,25 +66,27 @@ class HomeSecondFragment : Fragment() {
                 }
             )
 
-
-        }
-    }
-
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        with(homeViewModel) {
-            discoveries.observe(
+            moc.observe(
                 viewLifecycleOwner,
                 Observer {
-                    binding.mogList.adapter = MovieOfACategoryAdapter(it) {
+                    binding.mocList.adapter = MovieOfACategoryAdapter(it) {
                         val action = HomeSecondFragmentDirections.actionHomeSecondFragmentToMovieAboutFragment(it.id.toString());
                         NavHostFragment.findNavController(this@HomeSecondFragment).navigate(action)
                     }
 
                 }
             )
+
+
         }
     }
+
+//    override fun onActivityCreated(savedInstanceState: Bundle?) {
+//        super.onActivityCreated(savedInstanceState)
+//        with(homeViewModel) {
+//
+//        }
+//    }
 
 }
 
