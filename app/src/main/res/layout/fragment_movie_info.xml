@@ -8,23 +8,34 @@
             type="com.gmail.eamosse.idbdata.data.Movie" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".ui.home.HomeSecondFragment">
 
 
-        <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/moviePoster"
-            android:layout_width="wrap_content"
+
+        <ScrollView
+            android:id="@+id/scrollview"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
-            android:contentDescription="@string/todo"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_launcher_background"
-            tools:ignore="ImageContrastCheck" />
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:context=".ui.home.HomeSecondFragment">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/moviePoster"
+                    android:layout_width="356dp"
+                    android:layout_height="360dp"
+                    android:layout_marginTop="32dp"
+                    android:contentDescription="@string/todo"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/ic_launcher_background"
+                    tools:ignore="ImageContrastCheck" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/movieTitle"
@@ -42,6 +53,23 @@
             app:layout_constraintTop_toBottomOf="@+id/moviePoster"
             tools:text="Title" />
 
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/movieDate"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="24dp"
+                android:text="@{item.release_date}"
+                android:textColor="#000000"
+                android:textSize="20sp"
+                android:justificationMode="inter_word"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/movieTitle"
+                tools:text="Overview" />
+
                 <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/movieOverview"
             android:layout_width="0dp"
@@ -52,11 +80,11 @@
             android:text="@{item.overview}"
             android:textColor="#000000"
             android:textSize="20sp"
-            android:textStyle="bold"
+            android:justificationMode="inter_word"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/movieTitle"
+            app:layout_constraintTop_toBottomOf="@+id/movieDate"
             tools:text="Overview" />
 
         <androidx.appcompat.widget.AppCompatTextView
@@ -74,7 +102,9 @@
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/movieOverview"
-            tools:text="Votes" />
+            tools:text="Votes"
+            android:drawableLeft="@drawable/ic_baseline_favorite_24"/>
+
 
         <Button
             android:id="@+id/movieFavorite"
@@ -87,5 +117,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/movieVoteCount" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </ScrollView>
+
 </layout>
