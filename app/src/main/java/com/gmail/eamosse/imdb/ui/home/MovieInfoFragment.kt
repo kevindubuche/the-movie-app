@@ -22,12 +22,14 @@ class MovieInfoFragment : Fragment() {
 
 
     private lateinit var imagePreview : ImageView
+    //private lateinit var company_list_view ListView
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
         binding = FragmentMovieInfoBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -40,8 +42,6 @@ class MovieInfoFragment : Fragment() {
                 viewLifecycleOwner,
                 Observer {
                     getMovie(id = args.movieId.toInt())
-                    movieFavorite.setOnClickListener(View.OnClickListener {
-                    })
                 }
             )
 
