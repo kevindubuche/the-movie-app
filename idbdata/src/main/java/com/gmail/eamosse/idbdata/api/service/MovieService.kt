@@ -26,4 +26,6 @@ internal interface MovieService {
     @GET("/3/movie/{movie_id}/similar")
     suspend fun getSimilarMovies(@Path("movie_id")id: Int ,@Query("page") page: Int): Response<MovieOfACategoryResponse>
 
+    @GET("/3/movie/popular")
+    suspend fun getPopularMovies(): Response<MovieOfACategoryResponse>
 }

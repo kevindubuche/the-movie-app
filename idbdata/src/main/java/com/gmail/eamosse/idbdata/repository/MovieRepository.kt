@@ -1,5 +1,7 @@
 package com.gmail.eamosse.idbdata.repository
 
+import com.gmail.eamosse.idbdata.api.response.*
+import com.gmail.eamosse.idbdata.api.response.MovieOfACategoryResponse
 import com.gmail.eamosse.idbdata.api.response.toEntity
 import com.gmail.eamosse.idbdata.api.response.toMovie
 import com.gmail.eamosse.idbdata.api.response.toMovieOfACategory
@@ -86,4 +88,15 @@ class MovieRepository : KoinComponent {
         }
     }
 
+    suspend fun getPopularMovies(): Result<List<MovieOfACategory>> {
+        return when(val result = online.getPopularMovies()){
+            is Result.Succes -> {
+                val data = result.data.map {
+                    it.toMovieOfACategory()
+                }
+                Result.Succes(data)
+            }
+            is Result.Error -> result
+        }
+    }
 }

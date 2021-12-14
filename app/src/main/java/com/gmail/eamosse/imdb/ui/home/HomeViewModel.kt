@@ -4,10 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.gmail.eamosse.idbdata.data.Category
-import com.gmail.eamosse.idbdata.data.Movie
-import com.gmail.eamosse.idbdata.data.MovieOfACategory
-import com.gmail.eamosse.idbdata.data.Token
+import com.gmail.eamosse.idbdata.data.*
 import com.gmail.eamosse.idbdata.repository.MovieRepository
 import com.gmail.eamosse.idbdata.utils.Result
 import kotlinx.coroutines.Dispatchers
@@ -107,6 +104,19 @@ class HomeViewModel(private val repository: MovieRepository) : ViewModel() {
     fun getSimilarmovies(id: Int, pagination:Int = 1)  {//get Movies of a category
         viewModelScope.launch(Dispatchers.IO) {
             when (val result = repository.getSimilarMovies(id, pagination)) {
+                is Result.Succes -> {
+                    _moc.postValue(result.data)
+                }
+                is Result.Error -> {
+                    _error.postValue(result.message)
+                }
+            }
+        }
+    }
+
+    fun getPopularMovies(){
+        viewModelScope.launch(Dispatchers.IO) {
+            when (val result = repository.getPopularMovies()) {
                 is Result.Succes -> {
                     _moc.postValue(result.data)
                 }

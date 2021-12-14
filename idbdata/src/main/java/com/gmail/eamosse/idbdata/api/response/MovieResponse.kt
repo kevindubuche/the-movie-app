@@ -18,10 +18,10 @@ internal data class MovieResponse(
     val vote_count: Int,
     @SerializedName("release_date")
     val release_date: String,
-    @SerializedName("production_companies")
-    val production_companies: List<Company>,
-//    @SerializedName("original_language")
-//    val original_language: String
+//    @SerializedName("production_companies")
+//    val production_companies: List<Company>,
+    @SerializedName("original_language")
+    val original_language: String
 )
 
 
@@ -33,7 +33,7 @@ internal fun MovieResponse.toMovie() = Movie(
     vote_count = vote_count.toString(),
     release_date = release_date,
 //    production_companies = production_companies,
-//    original_language = original_language
+    original_language = original_language
 )
 
 //fun ListToString {

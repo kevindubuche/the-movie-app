@@ -32,24 +32,31 @@ internal class OnlineDataSource(private val service: MovieService) {
     }
 
     suspend fun getCategories(): Result<List<CategoryResponse.Genre>> {
-        return try {
+        return safeCall {
             val response = service.getCategories()
-            if (response.isSuccessful) {
-                Result.Succes(response.body()!!.genres)
-            } else {
-                Result.Error(
-                    exception = Exception(),
-                    message = response.message(),
-                    code = response.code()
-                )
+            when (val result = response.parse()){
+                is Result.Succes -> Result.Succes(result.data.genres)
+                is Result.Error -> result
             }
-        } catch (e: Exception) {
-            Result.Error(
-                exception = e,
-                message = e.message ?: "No message",
-                code = -1
-            )
         }
+//        return try {
+//            val response = service.getCategories()
+//            if (response.isSuccessful) {
+//                Result.Succes(response.body()!!.genres)
+//            } else {
+//                Result.Error(
+//                    exception = Exception(),
+//                    message = response.message(),
+//                    code = response.code()
+//                )
+//            }
+//        } catch (e: Exception) {
+//            Result.Error(
+//                exception = e,
+//                message = e.message ?: "No message",
+//                code = -1
+//            )
+//        }
     }
 
     suspend fun getMovieOfACategory(id: Int, page: Int = 1): Result<List<MovieOfACategoryResponse.MovieOfACategoryItem>> {
@@ -78,6 +85,16 @@ internal class OnlineDataSource(private val service: MovieService) {
             }
         }
 
+    }
+
+    suspend fun getPopularMovies(): Result<List<MovieOfACategoryResponse.MovieOfACategoryItem>> {
+        return safeCall {
+            val response = service.getPopularMovies()
+            when (val result = response.parse()) {
+                is Result.Succes -> Result.Succes(result.data.results)
+                is Result.Error -> result
+            }
+        }
     }
 
 }

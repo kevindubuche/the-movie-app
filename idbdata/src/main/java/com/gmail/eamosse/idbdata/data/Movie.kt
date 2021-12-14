@@ -8,5 +8,5 @@ data class Movie(
     val vote_count: String,
     val release_date: String,
 //    val production_companies: List<Company>,
-//    val original_language: String
+    val original_language: String
 )
